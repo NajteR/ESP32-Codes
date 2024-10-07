@@ -2,20 +2,19 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 
-// Adres I2C wyświetlacza OLED. Domyślnie 0x3C dla większości wyświetlaczy 128x64
+// I2C Address
 #define OLED_I2C_ADDRESS 0x3C
 
-// Definiowanie pinów dla I2C
+// I2C pins
 #define OLED_SCL 12 // D5
 #define OLED_SDA 14 // D6
 
-// Ustawienia ekranu OLED
+// OLED params
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
-// 'tutel', 128x64px
 // 'frame1', 128x64px
 const unsigned char epd_bitmap_frame1 [] PROGMEM = {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
@@ -571,7 +570,7 @@ int i = 0;
 
 void setup() {
   // put your setup code here, to run once:
-   // Konfiguracja wyświetlacza OLED
+   // Config oled
   Wire.begin(OLED_SDA, OLED_SCL);
     if (!display.begin(SSD1306_SWITCHCAPVCC, OLED_I2C_ADDRESS)) {
     Serial.println(F("SSD1306 allocation failed"));
